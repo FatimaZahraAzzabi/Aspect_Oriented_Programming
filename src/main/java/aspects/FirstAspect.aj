@@ -1,14 +1,17 @@
 package aspects;
 
 public aspect FirstAspect {
+    pointcut pc1(): execution(* net.fz.Main.main(..));
 
-    pointcut printMessage() : execution(* net.fz.Main.main(..));
-
-    before() : printMessage() {
-        System.out.println(">>> Avant main()");
+    before(): pc1(){
+        System.out.println("--------------------------------------------------");
+        System.out.println("Before main from Aspect with AspectJ syntax");
+        System.out.println("--------------------------------------------------");
     }
 
-    after() : printMessage() {
-        System.out.println(">>> Après main()");
+    after(): pc1(){
+        System.out.println("--------------------------------------------------");
+        System.out.println("After main from Aspect with AspectJ syntax");
+        System.out.println("--------------------------------------------------");
     }
 }
